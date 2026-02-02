@@ -63,19 +63,29 @@ void UGrabber::Grab() {
 		ECC_GameTraceChannel1,
 		Sphere
 	);
-	if (Hashit) {
+	/*if (Hashit) {
 		PhysicsHandle->GrabComponentAtLocationWithRotation(
 			HitResult.GetComponent(),
 			NAME_None,
 			HitResult.ImpactPoint,
 			HitResult.GetComponent()->GetComponentRotation()		
-			);
+			);*/
+	if(PhysicsHandle){
+		PhysicsHandle->GrabComponentAtLocationWithRotation(
+			HitResult.GetComponent(),
+			NAME_None,
+			HitResult.ImpactPoint,
+			HitResult.GetComponent()->GetComponentRotation();
+
+
+		
 		if (PhysicsHandle->GetGrabbedComponent()) {
 			UE_LOG(LogTemp, Warning, TEXT("Successfully Grabbed: %s"), *PhysicsHandle->GetGrabbedComponent()->GetName());
 		}
 	}
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("No Actor Hit"));
+		
 	}
 
 }
