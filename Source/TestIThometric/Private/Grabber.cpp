@@ -63,32 +63,30 @@ void UGrabber::Grab() {
 		ECC_GameTraceChannel1,
 		Sphere
 	);
-	/*if (Hashit) {
-		PhysicsHandle->GrabComponentAtLocationWithRotation(
-			HitResult.GetComponent(),
-			NAME_None,
-			HitResult.ImpactPoint,
-			HitResult.GetComponent()->GetComponentRotation()		
-			);*/
-	if(PhysicsHandle){
-		PhysicsHandle->GrabComponentAtLocationWithRotation(
-			HitResult.GetComponent(),
-			NAME_None,
-			HitResult.ImpactPoint,
-			HitResult.GetComponent()->GetComponentRotation());
+	if (Hashit && HitResult.GetComponent() != nullptr)
+	{
+		UPrimitiveComponent* HitComponent = HitResult.GetComponent();
 
+		// 1. 물리 시뮬레이션이 켜져 있는지 확인 (선택사항이지만 권장)
+		HitComponent->WakeAllRigidBodies();
 
-		
-		if (PhysicsHandle->GetGrabbedComponent()) {
-			UE_LOG(LogTemp, Warning, TEXT("Successfully Grabbed: %s"), *PhysicsHandle->GetGrabbedComponent()->GetName());
-		}
+		// 2. 실제 잡기 실행
+		PhysicsHandle->GrabComponentAtLocationWithRotation(
+			HitComponent,
+			NAME_None,
+			HitResult.ImpactPoint, // 실제 충격 지점
+			HitComponent->GetComponentRotation() // 컴포넌트의 현재 회전값
+		);
+
+		UE_LOG(LogTemp, Warning, TEXT("Successfully Grabbed: %s"), *HitComponent->GetName());
 	}
-	else {
+	else
+	{
 		UE_LOG(LogTemp, Warning, TEXT("No Actor Hit"));
-		
 	}
-
 }
+
+
 
 
 
