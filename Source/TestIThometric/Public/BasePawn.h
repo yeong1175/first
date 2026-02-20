@@ -47,6 +47,9 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category = "EE",meta = (AllowPrivateAccess = "true"))
 	int32 EditAnywhereInt = 22;
 
+	float Speed = 1000.f;
+	float MaxRange = 500.f;
+	float DistanceTraveled = 0.f;
 
 public:	
 	// Called every frame
