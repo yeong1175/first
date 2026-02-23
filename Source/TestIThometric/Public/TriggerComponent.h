@@ -6,9 +6,9 @@
 #include "Components/BoxComponent.h"
 #include "TriggerComponent.generated.h"
 
-/**
- * 
- */
+
+ 
+ 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TESTITHOMETRIC_API UTriggerComponent : public UBoxComponent
 {
