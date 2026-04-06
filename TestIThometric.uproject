@@ -25,6 +25,9 @@
 			"Name": "GameplayStateTree",
 			"Enabled": true
 		},
-		
+		{
+			"Name": "WaveformEditor",
+			"Enabled": true
+		}
 	]
 }
